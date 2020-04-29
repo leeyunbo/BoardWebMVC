@@ -12,7 +12,7 @@ JSTL과 EL을 이용
 ### MVC 프레임워크?
 ```
 1. Model1에서 jsp 내부에 View와 Controller가 같이 있는 것을 분리 시키기 위해 등장 
-2. DispathcerServlet, HandlerMapping, ViewResolver, Controller, View, Model로 이루어짐
+2. Controller, View, Model로 이루어짐
 ```
 
 ### 전체적인 흐름 
