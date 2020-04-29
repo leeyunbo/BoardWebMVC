@@ -78,7 +78,7 @@ public class BoardDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_DELETE);
-			stmt.setInt(0, vo.getSeq());
+			stmt.setInt(1, vo.getSeq());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,7 +94,7 @@ public class BoardDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_GET);
-			stmt.setInt(0, board.getSeq());
+			stmt.setInt(1, board.getSeq());
 			rs = stmt.executeQuery(); 
 			if(rs.next()) {
 				board = new BoardVO();
