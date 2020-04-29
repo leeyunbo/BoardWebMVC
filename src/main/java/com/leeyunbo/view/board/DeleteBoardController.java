@@ -2,32 +2,29 @@ package com.leeyunbo.view.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.leeyunbo.biz.board.BoardVO;
 import com.leeyunbo.biz.board.impl.BoardDAO;
 import com.leeyunbo.view.controller.Controller;
 
-public class GetBoardController implements Controller {
+public class DeleteBoardController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("글 상세 조회 처리");
-		// 1. 검색할 게시글 번호 추출
+		System.out.println("글 삭제 처리");
+		
+		// 1. 사용자 입력 정보 추출 
 		String seq = request.getParameter("seq");
 
-		// 2. DB 연동 처리 
+		// 2. DB 연동 처리
 		BoardVO vo = new BoardVO(); 
 		vo.setSeq(Integer.parseInt(seq));
 		
-		BoardDAO boardDAO = new BoardDAO();
-		BoardVO board = boardDAO.getBoard(vo);
+		BoardDAO boardDAO = new BoardDAO(); 
+		boardDAO.deleteBoard(vo);
 		
-		// 3. Session 저장
-		HttpSession session = request.getSession(); 
-		session.setAttribute("board", board);
-		
-		return "getBoard";
+		// 3. 화면 네비게이션
+		return "getBoardList.do";
 	}
 	
 }
